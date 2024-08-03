@@ -1,0 +1,18 @@
+export const COLORS = {
+  background: 'rgba(255, 255, 255, 1)',
+  foreground: 'rgba(9, 9, 11, 1)',
+  primary: 'rgba(24, 24, 27, 1)',
+  primaryForeground: 'rgba(250, 250, 250, 1)',
+  secondary: 'rgba(244, 244, 245, 1)',
+  secondaryForeground: 'rgba(24, 24, 27, 1)',
+  muted: 'rgba(244, 244, 245, 1)',
+  mutedForeground: 'rgba(113, 113, 122, 1)',
+  accent: 'rgba(244, 244, 245, 1)',
+  accentForeground: 'rgba(24, 24, 27, 1)',
+  destructive: 'rgba(239, 68, 68, 1)',
+  destructiveForeground: 'rgba(250, 250, 250, 1)',
+  border: 'rgba(228, 228, 231, 1)',
+  input: 'rgba(228, 228, 231, 1)',
+  transparent: 'rgba(0, 0, 0, 0)',
+  highlight: 'rgba(24, 24, 27, 0.2)',
+};
