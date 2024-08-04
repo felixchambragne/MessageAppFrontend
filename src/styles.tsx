@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import {FontVariant, StyleSheet} from 'react-native';
 import {COLORS} from './constants/colors';
 import {SIZES} from './constants/sizes';
 
@@ -13,6 +13,7 @@ export const TEXT = StyleSheet.create({
     fontSize: 36,
     fontFamily: 'Inter-ExtraBold',
     color: COLORS.foreground,
+    fontVariant: ['tabular-nums'] as FontVariant[],
   },
   h2: {
     fontSize: 30,

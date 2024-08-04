@@ -2,7 +2,7 @@ import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {TEXT} from '../styles';
 import {SIZES} from '../constants/sizes';
-import { COLORS } from '../constants/colors';
+import {COLORS} from '../constants/colors';
 
 interface InfoCardProps {
   title: string;

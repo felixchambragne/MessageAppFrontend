@@ -1,9 +1,8 @@
 import axios from 'axios';
-import {API_URL} from '../../contexts/auth';
 
 export const auth = () => {
   const res = axios
-    .post(`${API_URL}/auth`, {
+    .post('/auth', {
       headers: {'Content-Type': 'application/json'},
     })
     .then(async response => {

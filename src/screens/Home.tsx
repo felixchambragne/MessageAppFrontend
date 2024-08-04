@@ -1,4 +1,4 @@
-import {MessagesSquare, Send} from 'lucide-react-native';
+import {CloudOff, MessagesSquare, Send, Server} from 'lucide-react-native';
 import React, {useContext, useEffect, useState} from 'react';
 import {ActivityIndicator, FlatList, StyleSheet, View} from 'react-native';
 import Button from '../components/Button';
@@ -8,23 +8,23 @@ import Message from '../components/Message';
 import TextInput from '../components/TextInput';
 import {COLORS} from '../constants/colors';
 import {SIZES} from '../constants/sizes';
-import AuthContext from '../contexts/auth';
+import AuthContext from '../contexts/AuthContext';
 import {globalStyles} from '../styles';
 import {Message as MessageType} from '../types/types';
+import AppContext from '../contexts/AppContext';
 
 function HomeScreen() {
-  const {signedIn, socket, userId} = useContext(AuthContext);
+  const {signedIn, userId} = useContext(AuthContext);
   const [messages, setMessages] = useState<MessageType[]>([]);
   const [content, setContent] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(true);
+  const {isInternetConnected, isServerConnected, socket} =
+    useContext(AppContext);
 
   useEffect(() => {
     if (!signedIn || !socket) {
       return;
     }
-    console.log('Joining conversation...');
-    console.log('User ID:', userId);
-    console.log('Signed in:', signedIn);
     socket.emit('joinConversation');
     socket.on('joinedConversation', conversationMessages => {
       setMessages(conversationMessages);
@@ -32,7 +32,6 @@ function HomeScreen() {
     });
 
     socket.on('message', message => {
-      console.log('Received message:', message);
       setMessages(prev => {
         if (message.senderId === userId) {
           const filteredMessages = prev.filter(
@@ -77,9 +76,24 @@ function HomeScreen() {
   return (
     <View style={[styles.container]}>
       <Header />
-      <View style={[styles.messagesContainer, globalStyles.mainContainer]}>
+      <View style={[styles.messagesContainer]}>
         {loading ? (
           <View>
+            {!isInternetConnected ? (
+              <InfoCard
+                title="You're Offline"
+                description="It looks like you’re not connected to the internet. Please check your connection and try again"
+                icon={<CloudOff size={SIZES.lIcon} color={COLORS.foreground} />}
+              />
+            ) : !isServerConnected ? (
+              <InfoCard
+                title="Server Unavailable"
+                description="We're having trouble connecting to the server. Please try again later."
+                icon={<Server size={SIZES.lIcon} color={COLORS.foreground} />}
+              />
+            ) : (
+              <></>
+            )}
             <ActivityIndicator size="large" color={COLORS.primary} />
           </View>
         ) : messages.length === 0 ? (
@@ -101,6 +115,7 @@ function HomeScreen() {
               />
             )}
             keyExtractor={item => item.id}
+            style={globalStyles.mainContainer}
             contentContainerStyle={{gap: SIZES.s, paddingBottom: SIZES.l}}
             inverted
           />
@@ -112,8 +127,9 @@ function HomeScreen() {
           enterKeyHint="send"
           value={content}
           onChangeText={setContent}
+          editable={!loading}
         />
-        <Button icon={SendIcon} onPress={sendMessage} />
+        <Button icon={SendIcon} onPress={sendMessage} disabled={loading} />
       </View>
     </View>
   );
