@@ -1,0 +1,66 @@
+{
+  "app_name": "Bulles",
+  "offline": "You're Offline",
+  "offline_description": "It looks like you’re not connected to the internet. Please check your connection and try again",
+  "server_unavailable": "Server Unavailable",
+  "server_unavailable_description": "We're having trouble connecting to the server. Please try again later.",
+  "no_messages_yet": "No Messages Yet",
+  "no_messages_yet_description": "Your conversation is currently empty. Type your first message to start the chat!",
+  "input_message_placeholder": "Send a message",
+  "about_title": "About",
+  "welcome_text": "👋 Welcome to {{app_name}}",
+  "description": "{{app_name}} is a unique messaging app... You can only talk to one person at a time! Your partner is chosen each day at the same time. When the countdown ends, so does the conversation!",
+  "how_it_works": {
+    "title": "How It Works?",
+    "items": [
+      {
+        "title": "💬 Start Chatting",
+        "description": "Start the discussion with your daily partner!"
+      },
+      {
+        "title": "✉️ Send Messages",
+        "description": "Use the text field to send messages and emojis."
+      },
+      {
+        "title": "😄 Enjoy the Conversation",
+        "description": "Share your thoughts and stories anonymously."
+      },
+      {
+        "title": "📅 Daily Update",
+        "description": "Each day, you’ll be paired with a new person and previous conversations are deleted."
+      }
+    ]
+  },
+  "features": {
+    "title": "Features",
+    "items": [
+      {
+        "title": "🕵️‍ Anonymous Chats",
+        "description": "Enjoy conversations without revealing your personal information."
+      },
+      {
+        "title": "🗣 Daily Conversations",
+        "description": "Connect with a new person every day. Previous conversations are removed daily to ensure fresh interactions."
+      },
+      {
+        "title": "🔒 Secure Messaging",
+        "description": "All messages are encrypted to ensure your privacy."
+      },
+      {
+        "title": "🤓 Simple and Intuitive",
+        "description": "Easy-to-use interface for a seamless experience."
+      }
+    ]
+  },
+  "coming_soon": "Coming Soon: iOS version, bug fixes, and much more...",
+  "version_text": "{{app_name}} - Version {{version}}",
+  "new_contact": "New Contact Available!",
+  "new_contact_description": "You've been paired with a new contact. Start the conversation now!",
+  "new_contact_button": "Start the discussion",
+  "notification": {
+    "new_message": {
+      "title": "New Message",
+      "body": "You have received a new message! Time remaining: {{countdown}}"
+    }
+  }
+}

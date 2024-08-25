@@ -6,7 +6,9 @@ export async function storeToken(token: string | null) {
       await Keychain.resetGenericPassword();
       return;
     }
-    await Keychain.setGenericPassword('token', token);
+    await Keychain.setGenericPassword('token', token, {
+      service: 'auth',
+    });
   } catch (error) {
     console.error('Erreur de stockage du token :', error);
   }
@@ -14,7 +16,7 @@ export async function storeToken(token: string | null) {
 
 export async function retrieveToken() {
   try {
-    const credentials = await Keychain.getGenericPassword();
+    const credentials = await Keychain.getGenericPassword({service: 'auth'});
     if (credentials) {
       return credentials.password;
     }

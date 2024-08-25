@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {ActivityIndicator, StyleSheet, Text, View} from 'react-native';
 import {TEXT} from '../styles';
 import {SIZES} from '../constants/sizes';
 import {COLORS} from '../constants/colors';
@@ -8,9 +8,15 @@ interface InfoCardProps {
   title: string;
   description: string;
   icon?: React.ReactNode;
+  loading?: boolean;
 }
 
-const InfoCard: React.FC<InfoCardProps> = ({title, description, icon}) => {
+const InfoCard: React.FC<InfoCardProps> = ({
+  title,
+  description,
+  icon,
+  loading,
+}) => {
   return (
     <View style={styles.container}>
       {icon}
@@ -18,6 +24,7 @@ const InfoCard: React.FC<InfoCardProps> = ({title, description, icon}) => {
         <Text style={[TEXT.h3, styles.title]}>{title}</Text>
         <Text style={[TEXT.p, styles.description]}>{description}</Text>
       </View>
+      {loading && <ActivityIndicator size="large" color={COLORS.primary} />}
     </View>
   );
 };

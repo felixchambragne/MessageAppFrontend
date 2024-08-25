@@ -1,14 +1,22 @@
-import React from 'react';
-import {Pressable, PressableProps, StyleSheet, Text} from 'react-native';
-import {TEXT} from '../styles';
-import {SIZES} from '../constants/sizes';
+import React, {cloneElement} from 'react';
+import {
+  Pressable,
+  PressableProps,
+  PressableStateCallbackType,
+  StyleProp,
+  StyleSheet,
+  Text,
+  ViewStyle,
+} from 'react-native';
 import {COLORS} from '../constants/colors';
+import {SIZES} from '../constants/sizes';
+import {TEXT} from '../styles';
 
 interface ButtonProps extends PressableProps {
   text?: string;
-  icon?: (color: string, size: number) => React.ReactNode;
-  iconLeft?: (color: string, size: number) => React.ReactNode;
-  iconRight?: (color: string, size: number) => React.ReactNode;
+  icon?: React.ReactElement;
+  iconLeft?: React.ReactElement;
+  iconRight?: React.ReactElement;
   iconSize?: number;
   variant?: 'primary' | 'secondary' | 'destructive';
 }
@@ -20,6 +28,7 @@ const Button: React.FC<ButtonProps> = ({
   iconRight,
   iconSize = SIZES.sIcon,
   variant = 'primary',
+  style,
   ...props
 }) => {
   const themes = {
@@ -38,18 +47,40 @@ const Button: React.FC<ButtonProps> = ({
   };
   const theme = themes[variant] || {};
 
+  const iconLeftElement = iconLeft
+    ? cloneElement(iconLeft || icon, {
+        color: theme.color,
+        size: iconSize,
+      })
+    : null;
+
+  const iconRightElement = iconRight
+    ? cloneElement(iconRight, {
+        color: theme.color,
+        size: iconSize,
+      })
+    : null;
+
+  const iconElement = icon
+    ? cloneElement(icon, {
+        color: theme.color,
+        size: iconSize,
+      })
+    : null;
+
   return (
     <Pressable
-      style={[
+      style={({pressed}: PressableStateCallbackType) => [
+        style as StyleProp<ViewStyle>,
         styles.button,
-        icon && styles.iconButton,
+        !!icon && styles.iconButton,
         {backgroundColor: theme.backgroundColor},
+        {opacity: pressed ? 0.9 : 1},
       ]}
       {...props}>
-      {(iconLeft && iconLeft(theme.color, iconSize)) ||
-        (icon && icon(theme.color, iconSize))}
-      {text && <Text style={[TEXT.button, {color: theme.color}]}>{text}</Text>}
-      {iconRight && iconRight(theme.color, iconSize)}
+      {iconLeftElement || iconElement}
+      {text && <Text style={[TEXT.pMedium, {color: theme.color}]}>{text}</Text>}
+      {iconRightElement}
     </Pressable>
   );
 };
@@ -65,9 +96,10 @@ const styles = StyleSheet.create({
     gap: SIZES.s,
   },
   iconButton: {
-    paddingHorizontal: SIZES.xs,
-    paddingVertical: SIZES.xs,
+    paddingHorizontal: SIZES.s,
+    paddingVertical: SIZES.s,
     aspectRatio: 1,
+    alignSelf: 'center',
   },
 });
 

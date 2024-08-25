@@ -1,8 +1,8 @@
 import React, {useContext, useEffect, useState} from 'react';
 import {createContext} from 'react';
-import {retrieveToken, storeToken} from '../api/auth/jwt';
+import {retrieveToken, storeToken} from '../lib/jwt';
 import axios from 'axios';
-import {auth} from '../api/auth/auth';
+import {signUp} from '../api/auth/signUp';
 import {io} from 'socket.io-client';
 import AppContext, {API_URL} from './AppContext';
 
@@ -24,17 +24,17 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({children}) => {
 
   //Retrieve token from storage
   useEffect(() => {
-    const fetchData = async () => {
+    const getToken = async () => {
       const storedToken = await retrieveToken();
       if (!storedToken) {
-        const res = await auth();
+        const res = await signUp();
         storeToken(res.token);
         setToken(res.token);
       } else {
         setToken(storedToken);
       }
     };
-    fetchData();
+    getToken();
   }, []);
 
   //Set token in headers

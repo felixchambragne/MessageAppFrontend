@@ -4,7 +4,8 @@ import {SIZES} from './constants/sizes';
 
 export const globalStyles = StyleSheet.create({
   mainContainer: {
-    padding: SIZES.s,
+    paddingHorizontal: SIZES.m,
+    paddingVertical: SIZES.s,
   },
 });
 
@@ -17,8 +18,9 @@ export const TEXT = StyleSheet.create({
   },
   h2: {
     fontSize: 30,
-    fontFamily: 'Inter-SemiBold',
+    fontFamily: 'Inter-Bold',
     color: COLORS.foreground,
+    lineHeight: 33,
   },
   h3: {
     fontSize: 24,
@@ -36,7 +38,7 @@ export const TEXT = StyleSheet.create({
     color: COLORS.foreground,
     lineHeight: 15.3,
   },
-  button: {
+  pMedium: {
     fontSize: 14,
     fontFamily: 'Inter-Medium',
     color: COLORS.foreground,

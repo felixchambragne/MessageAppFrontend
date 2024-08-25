@@ -1,0 +1,66 @@
+{
+  "app_name": "Bulles",
+  "offline": "Vous êtes hors ligne",
+  "offline_description": "Il semble que vous ne soyez pas connecté à Internet. Veuillez vérifier votre connexion et réessayer.",
+  "server_unavailable": "Serveur inaccessible",
+  "server_unavailable_description": "Nous rencontrons des difficultés pour nous connecter au serveur. Veuillez réessayer plus tard.",
+  "no_messages_yet": "Aucun message pour l'instant",
+  "no_messages_yet_description": "Votre conversation est encore vide. Envoyez votre premier message pour commencer !",
+  "input_message_placeholder": "Envoyer un message",
+  "about_title": "À propos",
+  "welcome_text": "👋 Bienvenue sur {{app_name}}",
+  "description": "{{app_name}} est une messagerie un peu spéciale... Tu ne peux parler qu'à une seule personne à la fois ! Ton partenaire est déterminé chaque jour à la même heure. À la fin du décompte, fin de la conversation !",
+  "how_it_works": {
+    "title": "Comment ça marche ?",
+    "items": [
+      {
+        "title": "💬 Commence à discuter",
+        "description": "Commence la discussion avec ton partenaire quotidien !"
+      },
+      {
+        "title": "✉️ Envoie des messages",
+        "description": "Utilise le champ de texte pour envoyer des messages et des emojis."
+      },
+      {
+        "title": "😄 Profite de la conversation",
+        "description": "Partage tes pensées et tes histoires de manière anonyme."
+      },
+      {
+        "title": "📅 Mise à jour quotidienne",
+        "description": "Chaque jour, tu seras associé à une nouvelle personne et tes conversations précédentes sont supprimées."
+      }
+    ]
+  },
+  "features": {
+    "title": "Fonctionnalités",
+    "items": [
+      {
+        "title": "🕵️‍ Chats anonymes",
+        "description": "Profite des conversations sans révéler tes informations personnelles."
+      },
+      {
+        "title": "🗣 Conversations quotidiennes",
+        "description": "Connecte-toi avec une nouvelle personne chaque jour."
+      },
+      {
+        "title": "🔒 Messagerie sécurisée",
+        "description": "Tous les messages sont cryptés pour garantir ta confidentialité."
+      },
+      {
+        "title": "🤓 Simple et intuitif",
+        "description": "Interface facile à utiliser pour une expérience fluide."
+      }
+    ]
+  },
+  "coming_soon": "Bientôt : Version pour iOS, corrections de bugs, et bien plus...",
+  "version_text": "{{app_name}} - Version {{version}}",
+  "new_contact": "Nouveau contact disponible !",
+  "new_contact_description": "Vous avez été associé à une nouvelle personne. Commencez la conversation maintenant !",
+  "new_contact_button": "Démarrer la conversation",
+  "notification": {
+    "new_message": {
+      "title": "Nouveau message",
+      "body": "Vous avez reçu un nouveau message ! Temps restant : {{countdown}}"
+    }
+  }
+}
